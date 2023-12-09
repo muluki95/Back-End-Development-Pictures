@@ -69,7 +69,7 @@ def test_update_picture_by_id(client, picture):
     res_picture["event_state"] = new_state
     res = client.put(f'/picture/{id}', data=json.dumps(res_picture),
                      content_type="application/json")
-    res.status_code == 200
+    assert res.status_code == 200
     res = client.get(f'/picture/{id}')
     assert res.json['event_state'] == new_state
 
